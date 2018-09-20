@@ -1,30 +1,42 @@
+function bigger(a, b) {
+  return b - a;
+}
+
 class Sorter {
   constructor() {
-    // your implementation
+    this.arr=[]; 
+    this.compareFunctionM = bigger();
   }
 
   add(element) {
-    // your implementation
+    this.arr.push(element);
   }
 
   at(index) {
-    // your implementation
+    return this.arr[index];
   }
 
   get length() {
-    // your implementation
+    return this.arr.length;
   }
 
   toArray() {
-    // your implementation
+    return this.arr;
   }
 
   sort(indices) {
-    // your implementation
+    var newArr = [];
+    for(var i = 0; i < indices.length; i++)
+      newArr.push(this.arr[indices[i]]);
+    indices.sort();
+    newArr.sort(this.compareFunctionM);
+    for(var i = 0; i < indices.length; i++)
+      this.arr[indices[i]] = newArr[i];
+    return this.arr;
   }
 
   setComparator(compareFunction) {
-    // your implementation
+    this.compareFunctionM = compareFunction;
   }
 }
 
